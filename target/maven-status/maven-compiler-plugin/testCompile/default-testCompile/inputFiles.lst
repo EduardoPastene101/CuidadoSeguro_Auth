@@ -1,4 +1,16 @@
+<<<<<<< Updated upstream
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\test\java\com\hospital\authservice\factory\UserFactoryTest.java
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\test\java\com\hospital\authservice\integration\AuthServiceIntegrationTest.java
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\test\java\com\hospital\authservice\service\AuthServiceTest.java
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\test\java\com\hospital\authservice\controller\AuthControllerTest.java
+=======
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\factory\AdminUserTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\controller\AuthControllerTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\factory\ProfesionalUserTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\service\AuthServiceTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\factory\PacienteUserTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\integration\AuthServiceIntegrationTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\factory\UserFactoryTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\factory\TutorUserTest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\test\java\com\hospital\authservice\controller\PacienteControllerTest.java
+>>>>>>> Stashed changes

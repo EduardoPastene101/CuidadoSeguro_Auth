@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.009" tests="3" errors="0" skipped="3" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.hospital.authservice.factory.TutorUserTest" time="0.301" tests="14" errors="1" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,13 +58,65 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testLoginFail" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testValidarDatosEspecificosNullPacientesRuts" classname="com.hospital.authservice.factory.TutorUserTest" time="0.194"/>
+  <testcase name="testCrearUsuarioSuccess" classname="com.hospital.authservice.factory.TutorUserTest" time="0.011">
+    <system-out><![CDATA[22:11:40.592 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
   </testcase>
-  <testcase name="testRegisterPaciente" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testValidarDatosEspecificosMissingTutorRole" classname="com.hospital.authservice.factory.TutorUserTest" time="0.004"/>
+  <testcase name="testCrearUsuarioPersonaFields" classname="com.hospital.authservice.factory.TutorUserTest" time="0.005">
+    <failure message="expected: java.lang.String@a4aecc3&lt;1975-03-20&gt; but was: java.time.LocalDate@59f59a0a&lt;1975-03-20&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: java.lang.String@a4aecc3<1975-03-20> but was: java.time.LocalDate@59f59a0a<1975-03-20>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.hospital.authservice.factory.TutorUserTest.testCrearUsuarioPersonaFields(TutorUserTest.java:210)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[22:11:40.608 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
   </testcase>
-  <testcase name="testHealth" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testCrearUsuarioTutorFields" classname="com.hospital.authservice.factory.TutorUserTest" time="0.004">
+    <system-out><![CDATA[22:11:40.614 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
   </testcase>
+  <testcase name="testCrearUsuarioWithPacientesRuts" classname="com.hospital.authservice.factory.TutorUserTest" time="0.007">
+    <system-out><![CDATA[22:11:40.622 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
+  </testcase>
+  <testcase name="testCrearUsuarioSinglePacienteRut" classname="com.hospital.authservice.factory.TutorUserTest" time="0.012">
+    <system-out><![CDATA[22:11:40.634 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
+  </testcase>
+  <testcase name="testCrearUsuarioRelationships" classname="com.hospital.authservice.factory.TutorUserTest" time="0.008">
+    <system-out><![CDATA[22:11:40.644 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosSuccess" classname="com.hospital.authservice.factory.TutorUserTest" time="0.007"/>
+  <testcase name="testValidarDatosEspecificosEmptyPacientesRuts" classname="com.hospital.authservice.factory.TutorUserTest" time="0.005"/>
+  <testcase name="testCrearUsuarioEmptyPacientesRuts" classname="com.hospital.authservice.factory.TutorUserTest" time="0.009">
+    <error message="&#10;Unnecessary stubbings detected.&#10;Clean &amp; maintainable test code requires zero unnecessary code.&#10;Following stubbings are unnecessary (click to navigate to relevant line of code):&#10;  1. -&gt; at com.hospital.authservice.factory.TutorUserTest.testCrearUsuarioEmptyPacientesRuts(TutorUserTest.java:119)&#10;Please remove unnecessary stubbings or use &apos;lenient&apos; strictness. More info: javadoc for UnnecessaryStubbingException class." type="org.mockito.exceptions.misusing.UnnecessaryStubbingException"><![CDATA[org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.hospital.authservice.factory.TutorUserTest.testCrearUsuarioEmptyPacientesRuts(TutorUserTest.java:119)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+	at org.mockito.junit.jupiter.MockitoExtension.afterEach(MockitoExtension.java:192)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></error>
+    <system-out><![CDATA[22:11:40.671 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
+  </testcase>
+  <testcase name="testCrearUsuarioRoleNotFound" classname="com.hospital.authservice.factory.TutorUserTest" time="0.005">
+    <system-out><![CDATA[22:11:40.678 [main] INFO com.hospital.authservice.factory.TutorUser -- Creando usuario de tipo TUTOR para: tutor
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosWithTutorRole" classname="com.hospital.authservice.factory.TutorUserTest" time="0.005"/>
+  <testcase name="testGetTipoUsuario" classname="com.hospital.authservice.factory.TutorUserTest" time="0.003"/>
 </testsuite>

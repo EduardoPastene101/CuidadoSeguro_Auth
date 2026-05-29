@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\main\java\com\hospital\authservice\config\JacksonConfig.java
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\main\java\com\hospital\authservice\factory\AdminUser.java
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\main\java\com\hospital\authservice\dto\ApiResponseDto.java
@@ -48,3 +49,55 @@ C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\Cu
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\main\java\com\hospital\authservice\repository\RefreshTokenRepository.java
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\main\java\com\hospital\authservice\security\CustomUserDetailsService.java
 C:\Users\karip\OneDrive\Escritorio\CuidadoSeguro2\CuidadoSeguro_Auth-main (2)\CuidadoSeguro_Auth-main\src\main\java\com\hospital\authservice\security\SecurityConfig.java
+=======
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\dto\AuthResponse.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\PacienteRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\TerminosCondiciones.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\security\CustomUserDetailsService.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\factory\UserFactory.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\config\JacksonConfig.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\security\SecurityConfig.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\dto\RegisterRequest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\factory\AdminUser.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\factory\TutorUser.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\security\JwtService.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\TutorRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\UsuarioRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\dto\ApiResponseDto.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\RoleRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\factory\User.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\config\OpenApiConfig.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\dto\LoginRequest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\Consentimiento.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\ConsentimientoRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\RefreshToken.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\TerminosCondicionesRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\Profesional.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\ProfesionalRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\AuthServiceApplication.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\PersonaRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\service\AuthServiceWithCircuitBreaker.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\TokenBlacklist.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\dto\PacienteMicroDto.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\Tutor.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\utils\CryptoUtil.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\controller\AuthController.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\Usuario.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\TokenBlacklistRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\factory\ProfesionalUser.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\security\JwtAuthenticationEntryPoint.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\exception\AuthException.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\security\JwtAuthenticationFilter.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\service\AuthService.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\factory\PacienteUser.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\dto\RefreshRequest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\dto\LogoutRequest.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\repository\RefreshTokenRepository.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\config\Resilience4jConfig.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\Paciente.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\Persona.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\controller\PacienteController.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\entity\Role.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\config\RestTemplateConfig.java
+C:\Users\trami\Documents\GitHub\CuidadoSeguro_Auth\src\main\java\com\hospital\authservice\utils\CryptoConverter.java
+>>>>>>> Stashed changes

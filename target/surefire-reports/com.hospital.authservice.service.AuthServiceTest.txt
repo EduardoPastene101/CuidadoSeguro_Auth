@@ -1,12 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: com.hospital.authservice.service.AuthServiceTest
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.675 s <<< FAILURE! -- in com.hospital.authservice.service.AuthServiceTest
-com.hospital.authservice.service.AuthServiceTest.testLoginSuccess -- Time elapsed: 0.110 s <<< ERROR!
+Tests run: 27, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 1.560 s <<< FAILURE! -- in com.hospital.authservice.service.AuthServiceTest
+com.hospital.authservice.service.AuthServiceTest.testLoginSuccess -- Time elapsed: 0.085 s <<< ERROR!
 com.hospital.authservice.exception.AuthException: Usuario no encontrado
 	at com.hospital.authservice.service.AuthService.login(AuthService.java:133)
 	at com.hospital.authservice.service.AuthServiceTest.testLoginSuccess(AuthServiceTest.java:167)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.hospital.authservice.service.AuthServiceTest.testRegisterSuccess -- Time elapsed: 0.042 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.web.client.RestTemplate.exchange(String, org.springframework.http.HttpMethod, org.springframework.http.HttpEntity, java.lang.Class, Object[])" because "<local3>.restTemplate" is null
+	at com.hospital.authservice.service.AuthService.register(AuthService.java:360)
+	at com.hospital.authservice.service.AuthServiceTest.testRegisterSuccess(AuthServiceTest.java:235)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
 

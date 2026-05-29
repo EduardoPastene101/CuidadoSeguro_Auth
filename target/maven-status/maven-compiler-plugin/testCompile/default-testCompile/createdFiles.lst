@@ -1,4 +1,9 @@
-com\hospital\authservice\controller\AuthControllerTest.class
-com\hospital\authservice\service\AuthServiceTest.class
-com\hospital\authservice\factory\UserFactoryTest.class
+com\hospital\authservice\factory\PacienteUserTest.class
 com\hospital\authservice\integration\AuthServiceIntegrationTest.class
+com\hospital\authservice\controller\AuthControllerTest.class
+com\hospital\authservice\factory\ProfesionalUserTest.class
+com\hospital\authservice\service\AuthServiceTest.class
+com\hospital\authservice\factory\AdminUserTest.class
+com\hospital\authservice\factory\UserFactoryTest.class
+com\hospital\authservice\factory\TutorUserTest.class
+com\hospital\authservice\controller\PacienteControllerTest.class

@@ -386,4 +386,186 @@ class AuthServiceTest {
         verify(tokenBlacklistRepository)
                 .eliminarTokensExpirados(any(LocalDateTime.class));
     }
+
+    @Test
+    void testObtenerDetallesUsuarioSuccess() {
+        // Given
+        String token = "Bearer valid-token";
+        Paciente paciente = Paciente.builder()
+                .id(1L)
+                .historiaClinica("HC-001")
+                .build();
+        usuario.setPaciente(paciente);
+
+        when(jwtService.isTokenValid("valid-token")).thenReturn(true);
+        when(jwtService.getUserIdFromToken("valid-token")).thenReturn(1L);
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario));
+
+        // When
+        Paciente result = authService.obtenerDetallesUsuario(token);
+
+        // Then
+        assertNotNull(result);
+        assertEquals(paciente, result);
+    }
+
+    @Test
+    void testObtenerDetallesUsuarioTokenNotProvided() {
+        // Given
+        String token = "";
+
+        // When & Then
+        assertThrows(AuthException.class, () -> authService.obtenerDetallesUsuario(token));
+    }
+
+    @Test
+    void testObtenerDetallesUsuarioInvalidToken() {
+        // Given
+        String token = "Bearer invalid-token";
+        when(jwtService.isTokenValid("invalid-token")).thenReturn(false);
+
+        // When & Then
+        assertThrows(AuthException.class, () -> authService.obtenerDetallesUsuario(token));
+    }
+
+    @Test
+    void testObtenerDetallesUsuarioTokenBlacklisted() {
+        // Given
+        String token = "Bearer blacklisted-token";
+        when(tokenBlacklistRepository.existsByToken("blacklisted-token")).thenReturn(true);
+
+        // When & Then
+        assertThrows(AuthException.class, () -> authService.obtenerDetallesUsuario(token));
+    }
+
+    @Test
+    void testObtenerDetallesUsuarioUserIdNull() {
+        // Given
+        String token = "Bearer valid-token";
+        when(jwtService.isTokenValid("valid-token")).thenReturn(true);
+        when(jwtService.getUserIdFromToken("valid-token")).thenReturn(null);
+
+        // When & Then
+        assertThrows(AuthException.class, () -> authService.obtenerDetallesUsuario(token));
+    }
+
+    @Test
+    void testObtenerDetallesUsuarioUsuarioNotFound() {
+        // Given
+        String token = "Bearer valid-token";
+        when(jwtService.isTokenValid("valid-token")).thenReturn(true);
+        when(jwtService.getUserIdFromToken("valid-token")).thenReturn(1L);
+        when(usuarioRepository.findById(1L)).thenReturn(Optional.empty());
+
+        // When & Then
+        assertThrows(AuthException.class, () -> authService.obtenerDetallesUsuario(token));
+    }
+
+    @Test
+    void testValidateTokenSuccess() {
+        // Given
+        String token = "valid-token";
+        when(tokenBlacklistRepository.existsByToken(token)).thenReturn(false);
+        when(jwtService.isTokenValid(token)).thenReturn(true);
+
+        // When
+        boolean result = authService.validateToken(token);
+
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void testValidateTokenBlacklisted() {
+        // Given
+        String token = "blacklisted-token";
+        when(tokenBlacklistRepository.existsByToken(token)).thenReturn(true);
+
+        // When
+        boolean result = authService.validateToken(token);
+
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void testValidateTokenInvalid() {
+        // Given
+        String token = "invalid-token";
+        when(tokenBlacklistRepository.existsByToken(token)).thenReturn(false);
+        when(jwtService.isTokenValid(token)).thenReturn(false);
+
+        // When
+        boolean result = authService.validateToken(token);
+
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void testValidateTokenException() {
+        // Given
+        String token = "exception-token";
+        when(tokenBlacklistRepository.existsByToken(token)).thenThrow(new RuntimeException("Database error"));
+
+        // When
+        boolean result = authService.validateToken(token);
+
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void testTieneCaracterEspecialWithSpecialChar() {
+        // When
+        boolean result = AuthService.tieneCaracterEspecial("password!");
+
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void testTieneCaracterEspecialWithoutSpecialChar() {
+        // When
+        boolean result = AuthService.tieneCaracterEspecial("password123");
+
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void testTieneCaracterEspecialNull() {
+        // When
+        boolean result = AuthService.tieneCaracterEspecial(null);
+
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void testTieneCaracterEspecialEmpty() {
+        // When
+        boolean result = AuthService.tieneCaracterEspecial("");
+
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void testTieneCaracterEspecialWithSpace() {
+        // When
+        boolean result = AuthService.tieneCaracterEspecial("password 123");
+
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void testTieneCaracterEspecialWithMultipleSpecialChars() {
+        // When
+        boolean result = AuthService.tieneCaracterEspecial("p@ssw0rd!");
+
+        // Then
+        assertTrue(result);
+    }
 }

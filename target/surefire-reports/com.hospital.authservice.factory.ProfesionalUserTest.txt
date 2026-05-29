@@ -1,0 +1,30 @@
+-------------------------------------------------------------------------------
+Test set: com.hospital.authservice.factory.ProfesionalUserTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.145 s <<< FAILURE! -- in com.hospital.authservice.factory.ProfesionalUserTest
+com.hospital.authservice.factory.ProfesionalUserTest.testCrearUsuarioWithFullProfessionalInfo -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: java.lang.Integer@36deacfc<40> but was: java.lang.String@3b0471a5<40>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.hospital.authservice.factory.ProfesionalUserTest.testCrearUsuarioWithFullProfessionalInfo(ProfesionalUserTest.java:105)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.hospital.authservice.factory.ProfesionalUserTest.testCrearUsuarioPersonaFields -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: java.lang.String@527e6bd3<1985-05-15> but was: java.time.LocalDate@4867e76b<1985-05-15>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.hospital.authservice.factory.ProfesionalUserTest.testCrearUsuarioPersonaFields(ProfesionalUserTest.java:304)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

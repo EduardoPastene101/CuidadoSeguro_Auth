@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.009" tests="3" errors="0" skipped="3" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.hospital.authservice.factory.PacienteUserTest" time="0.079" tests="10" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,13 +58,44 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testLoginFail" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testCrearUsuarioSuccess" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.009">
+    <system-out><![CDATA[22:11:40.156 [main] INFO com.hospital.authservice.factory.PacienteUser -- Creando usuario de tipo PACIENTE para: paciente
+]]></system-out>
   </testcase>
-  <testcase name="testRegisterPaciente" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testCrearUsuarioWithMedicalInfo" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.007">
+    <system-out><![CDATA[22:11:40.165 [main] INFO com.hospital.authservice.factory.PacienteUser -- Creando usuario de tipo PACIENTE para: paciente
+]]></system-out>
   </testcase>
-  <testcase name="testHealth" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testCrearUsuarioPersonaFields" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.007">
+    <failure message="expected: java.lang.String@5259469d&lt;1990-01-01&gt; but was: java.time.LocalDate@41a4135e&lt;1990-01-01&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: java.lang.String@5259469d<1990-01-01> but was: java.time.LocalDate@41a4135e<1990-01-01>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.hospital.authservice.factory.PacienteUserTest.testCrearUsuarioPersonaFields(PacienteUserTest.java:174)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[22:11:40.176 [main] INFO com.hospital.authservice.factory.PacienteUser -- Creando usuario de tipo PACIENTE para: paciente
+]]></system-out>
   </testcase>
+  <testcase name="testCrearUsuarioPacienteFields" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.01">
+    <system-out><![CDATA[22:11:40.186 [main] INFO com.hospital.authservice.factory.PacienteUser -- Creando usuario de tipo PACIENTE para: paciente
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosMissingPacienteRole" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.003"/>
+  <testcase name="testCrearUsuarioRelationships" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.007">
+    <system-out><![CDATA[22:11:40.197 [main] INFO com.hospital.authservice.factory.PacienteUser -- Creando usuario de tipo PACIENTE para: paciente
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosSuccess" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.005"/>
+  <testcase name="testCrearUsuarioRoleNotFound" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.006">
+    <system-out><![CDATA[22:11:40.212 [main] INFO com.hospital.authservice.factory.PacienteUser -- Creando usuario de tipo PACIENTE para: paciente
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosWithPacienteRole" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.005"/>
+  <testcase name="testGetTipoUsuario" classname="com.hospital.authservice.factory.PacienteUserTest" time="0.002"/>
 </testsuite>

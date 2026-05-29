@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.009" tests="3" errors="0" skipped="3" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.hospital.authservice.factory.ProfesionalUserTest" time="0.145" tests="20" errors="0" skipped="0" failures="2">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,13 +58,69 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testLoginFail" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testValidarDatosEspecificosMissingNumeroLicencia" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.006"/>
+  <testcase name="testCrearUsuarioSuccess" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.015">
+    <system-out><![CDATA[22:11:40.250 [main] INFO com.hospital.authservice.factory.ProfesionalUser -- Creando usuario de tipo PROFESIONAL para: doctor
+]]></system-out>
   </testcase>
-  <testcase name="testRegisterPaciente" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testValidarDatosEspecificosEmptyEspecialidad" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.004"/>
+  <testcase name="testValidarDatosEspecificosMissingUniversidad" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.003"/>
+  <testcase name="testCrearUsuarioProfesionalFields" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.005">
+    <system-out><![CDATA[22:11:40.276 [main] INFO com.hospital.authservice.factory.ProfesionalUser -- Creando usuario de tipo PROFESIONAL para: doctor
+]]></system-out>
   </testcase>
-  <testcase name="testHealth" classname="com.hospital.authservice.integration.AuthServiceIntegrationTest" time="0.0">
-    <skipped message="class com.hospital.authservice.integration.AuthServiceIntegrationTest is @Disabled"/>
+  <testcase name="testCrearUsuarioWithFullProfessionalInfo" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.006">
+    <failure message="expected: java.lang.Integer@36deacfc&lt;40&gt; but was: java.lang.String@3b0471a5&lt;40&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: java.lang.Integer@36deacfc<40> but was: java.lang.String@3b0471a5<40>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.hospital.authservice.factory.ProfesionalUserTest.testCrearUsuarioWithFullProfessionalInfo(ProfesionalUserTest.java:105)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[22:11:40.282 [main] INFO com.hospital.authservice.factory.ProfesionalUser -- Creando usuario de tipo PROFESIONAL para: doctor
+]]></system-out>
   </testcase>
+  <testcase name="testValidarDatosEspecificosEmptyNumeroLicencia" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.005"/>
+  <testcase name="testCrearUsuarioPersonaFields" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.005">
+    <failure message="expected: java.lang.String@527e6bd3&lt;1985-05-15&gt; but was: java.time.LocalDate@4867e76b&lt;1985-05-15&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: java.lang.String@527e6bd3<1985-05-15> but was: java.time.LocalDate@4867e76b<1985-05-15>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.hospital.authservice.factory.ProfesionalUserTest.testCrearUsuarioPersonaFields(ProfesionalUserTest.java:304)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+]]></failure>
+    <system-out><![CDATA[22:11:40.296 [main] INFO com.hospital.authservice.factory.ProfesionalUser -- Creando usuario de tipo PROFESIONAL para: doctor
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosMissingProfesionalRole" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.003"/>
+  <testcase name="testValidarDatosEspecificosValidAnioGraduacion" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.005"/>
+  <testcase name="testCrearUsuarioWithDefaultExperience" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.005">
+    <system-out><![CDATA[22:11:40.316 [main] INFO com.hospital.authservice.factory.ProfesionalUser -- Creando usuario de tipo PROFESIONAL para: doctor
+]]></system-out>
+  </testcase>
+  <testcase name="testCrearUsuarioRelationships" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.004">
+    <system-out><![CDATA[22:11:40.322 [main] INFO com.hospital.authservice.factory.ProfesionalUser -- Creando usuario de tipo PROFESIONAL para: doctor
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosInvalidAnioGraduacionTooNew" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.006"/>
+  <testcase name="testValidarDatosEspecificosInvalidAnioGraduacionTooOld" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.007"/>
+  <testcase name="testValidarDatosEspecificosWithProfesionalRole" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.004"/>
+  <testcase name="testValidarDatosEspecificosSuccess" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.006"/>
+  <testcase name="testCrearUsuarioRoleNotFound" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.005">
+    <system-out><![CDATA[22:11:40.361 [main] INFO com.hospital.authservice.factory.ProfesionalUser -- Creando usuario de tipo PROFESIONAL para: doctor
+]]></system-out>
+  </testcase>
+  <testcase name="testValidarDatosEspecificosMissingEspecialidad" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.007"/>
+  <testcase name="testValidarDatosEspecificosEmptyUniversidad" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.006"/>
+  <testcase name="testGetTipoUsuario" classname="com.hospital.authservice.factory.ProfesionalUserTest" time="0.003"/>
 </testsuite>

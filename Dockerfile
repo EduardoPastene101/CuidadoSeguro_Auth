@@ -1,13 +1,10 @@
 # Etapa 1: Build con Maven
 FROM maven:3.9.6-eclipse-temurin-17 AS build
-
 WORKDIR /app
-
-# Copiar archivos de configuración de Maven
 COPY pom.xml .
+COPY jwt-common ./jwt-common
 COPY src ./src
-
-# Build de la aplicación
+RUN mvn install -f jwt-common/pom.xml -DskipTests -q
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Runtime con OpenJDK

@@ -8,7 +8,7 @@ RUN mvn install -f jwt-common/pom.xml -DskipTests -q
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Runtime con OpenJDK
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre-jammy
 
 # Instalar dependencias necesarias
 RUN apt-get update && apt-get install -y \

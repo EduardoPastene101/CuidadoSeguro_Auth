@@ -129,10 +129,10 @@ auth:
       allowed-origins:
         - http://localhost:3000
         - http://localhost:4200
-        - http://alb-ms-pacientes-1492385033.us-east-1.elb.amazonaws.com:8082
-        - http://dmms-305868912.us-east-1.elb.amazonaws.com:8083
-        - http://bff-cuidadoseguro-1663456204.us-east-1.elb.amazonaws.com:8090
-        - http://alb-apigateway-706412478.us-east-1.elb.amazonaws.com:8080
+        - http://paciente-ms-493696077.us-east-1.elb.amazonaws.com:8082
+        - http://dm-ms-401060910.us-east-1.elb.amazonaws.com:8083
+        - http://bff-1009660170.us-east-1.elb.amazonaws.com:8090
+        - http://api-gateway-1937747119.us-east-1.elb.amazonaws.com:8080
       allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
       allowed-headers: "*"
       allow-credentials: true

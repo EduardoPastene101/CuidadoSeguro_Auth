@@ -16,8 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Slf4j
@@ -64,6 +62,7 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(
             @Valid @RequestBody RegisterRequest request) {
 
+        System.out.println("ENTRÓ AL REGISTER");
         log.info("Register attempt: {}", request.getUsername());
 
         AuthResponse response = authService.register(request);

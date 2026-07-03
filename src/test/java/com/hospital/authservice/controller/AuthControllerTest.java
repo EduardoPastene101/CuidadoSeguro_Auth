@@ -2,7 +2,9 @@ package com.hospital.authservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hospital.authservice.dto.*;
+import com.hospital.authservice.exception.AuthException;
 import com.hospital.authservice.service.AuthService;
+import com.hospital.authservice.service.AuthServiceWithCircuitBreaker;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,9 @@ class AuthControllerTest {
 
         @Mock
         private AuthService authService;
+
+        @Mock
+        private AuthServiceWithCircuitBreaker authServiceWithCircuitBreaker;
 
         @InjectMocks
         private AuthController authController;
@@ -59,7 +64,7 @@ class AuthControllerTest {
                                 .message("Login exitoso")
                                 .build();
 
-                when(authService.login(any(LoginRequest.class))).thenReturn(response);
+                when(authServiceWithCircuitBreaker.loginWithCircuitBreaker(any(LoginRequest.class))).thenReturn(response);
 
                 // When & Then
                 mockMvc.perform(post("/auth/login")
@@ -81,8 +86,8 @@ class AuthControllerTest {
                                 .password("wrongpassword")
                                 .build();
 
-                when(authService.login(any(LoginRequest.class)))
-                                .thenThrow(new RuntimeException("Credenciales inválidas"));
+                when(authServiceWithCircuitBreaker.loginWithCircuitBreaker(any(LoginRequest.class)))
+                                .thenThrow(new AuthException("Credenciales inválidas"));
 
                 // When & Then
                 mockMvc.perform(post("/auth/login")
@@ -114,7 +119,7 @@ class AuthControllerTest {
                                 .message("Registro exitoso")
                                 .build();
 
-                when(authService.register(any(RegisterRequest.class))).thenReturn(response);
+                when(authServiceWithCircuitBreaker.registerWithCircuitBreaker(any(RegisterRequest.class))).thenReturn(response);
 
                 // When & Then
                 mockMvc.perform(post("/auth/register")
@@ -157,7 +162,7 @@ class AuthControllerTest {
                                 .message("Token refrescado exitosamente")
                                 .build();
 
-                when(authService.refreshToken(any(RefreshRequest.class))).thenReturn(response);
+                when(authServiceWithCircuitBreaker.refreshTokenWithCircuitBreaker(any(RefreshRequest.class))).thenReturn(response);
 
                 // When & Then
                 mockMvc.perform(post("/auth/refresh")
@@ -176,8 +181,8 @@ class AuthControllerTest {
                                 .refreshToken("invalid-refresh-token")
                                 .build();
 
-                when(authService.refreshToken(any(RefreshRequest.class)))
-                                .thenThrow(new RuntimeException("Refresh token inválido"));
+                when(authServiceWithCircuitBreaker.refreshTokenWithCircuitBreaker(any(RefreshRequest.class)))
+                                .thenThrow(new AuthException("Refresh token inválido"));
 
                 // When & Then
                 mockMvc.perform(post("/auth/refresh")
@@ -195,7 +200,7 @@ class AuthControllerTest {
                                 .build();
 
                 ApiResponseDto<Void> response = ApiResponseDto.success(null, "Logout exitoso");
-                when(authService.logout(any(LogoutRequest.class))).thenReturn(response);
+                when(authServiceWithCircuitBreaker.logoutWithCircuitBreaker(any(LogoutRequest.class))).thenReturn(response);
 
                 // When & Then
                 mockMvc.perform(post("/auth/logout")

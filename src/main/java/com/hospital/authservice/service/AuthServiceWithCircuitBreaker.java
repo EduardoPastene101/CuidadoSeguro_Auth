@@ -55,22 +55,44 @@ public class AuthServiceWithCircuitBreaker {
     
     // ===================== Métodos fallback =====================
     //
-    // IMPORTANTE: si la excepción original es AuthException (username en uso,
-    // credenciales inválidas, etc.) la relanzamos tal cual — es un error de
-    // negocio legítimo y el usuario debe ver ese mensaje, no un genérico
-    // "servicio no disponible". Solo cuando el fallo es de infraestructura
-    // (timeout, conexión rechazada, circuito abierto) devolvemos
+    // IMPORTANTE: si la excepción original es un error de NEGOCIO
+    // (AuthException: username en uso, credenciales inválidas, etc.;
+    // IllegalArgumentException: validaciones de los factory de usuario,
+    // como "el admin debe tener ROLE_ADMIN") la relanzamos tal cual — el
+    // usuario debe ver ese mensaje real, no un genérico "servicio no
+    // disponible". Solo cuando el fallo es de infraestructura (timeout,
+    // conexión rechazada, circuito abierto, servicio caído) devolvemos
     // DownstreamServiceException, que el GlobalExceptionHandler traduce a 503.
+    //
+    // OJO: Resilience4j invoca el método fallback para CUALQUIER excepción
+    // que lance el método real, incluso las que están en "ignoreExceptions"
+    // de Resilience4jConfig (ese ignore solo afecta si cuenta o no para abrir
+    // el circuito, no si dispara el fallback). Por eso este chequeo es
+    // necesario aquí y no basta con la config del circuit breaker.
     //
     // Además, NUNCA devolvemos un AuthResponse "vacío" con mensaje de error:
     // eso haría que el controller responda 200/201 como si la operación
     // hubiera sido exitosa, cuando en realidad falló.
 
-    public AuthResponse fallbackLogin(LoginRequest request, Throwable ex) {
-        log.error("Fallback login para usuario {} debido a: {}", request.getUsername(), ex.getMessage());
+    /**
+     * Si la excepción es un error de negocio/validación conocido, la relanza
+     * tal cual (para que el GlobalExceptionHandler la traduzca al status
+     * correcto: 401 para AuthException, 400 para IllegalArgumentException).
+     * Si no, no hace nada y deja que el llamador decida cómo envolverla
+     * como fallo de infraestructura.
+     */
+    private void rethrowIfBusinessException(Throwable ex) {
         if (ex instanceof AuthException authEx) {
             throw authEx;
         }
+        if (ex instanceof IllegalArgumentException illegalArgEx) {
+            throw illegalArgEx;
+        }
+    }
+
+    public AuthResponse fallbackLogin(LoginRequest request, Throwable ex) {
+        log.error("Fallback login para usuario {} debido a: {}", request.getUsername(), ex.getMessage());
+        rethrowIfBusinessException(ex);
         throw new DownstreamServiceException(
                 "auth-login",
                 "El servicio de autenticación no está disponible en este momento. Intente más tarde.",
@@ -79,9 +101,7 @@ public class AuthServiceWithCircuitBreaker {
 
     public AuthResponse fallbackRegister(RegisterRequest request, Throwable ex) {
         log.error("Fallback register para usuario {} debido a: {}", request.getUsername(), ex.getMessage());
-        if (ex instanceof AuthException authEx) {
-            throw authEx;
-        }
+        rethrowIfBusinessException(ex);
         throw new DownstreamServiceException(
                 "auth-register",
                 "El servicio de registro no está disponible en este momento. Intente más tarde.",
@@ -90,9 +110,7 @@ public class AuthServiceWithCircuitBreaker {
 
     public AuthResponse fallbackRefreshToken(RefreshRequest request, Throwable ex) {
         log.error("Fallback refresh token debido a: {}", ex.getMessage());
-        if (ex instanceof AuthException authEx) {
-            throw authEx;
-        }
+        rethrowIfBusinessException(ex);
         throw new DownstreamServiceException(
                 "auth-refresh",
                 "El servicio de renovación de token no está disponible en este momento. Intente más tarde.",
@@ -101,9 +119,7 @@ public class AuthServiceWithCircuitBreaker {
 
     public ApiResponseDto<Void> fallbackLogout(LogoutRequest request, Throwable ex) {
         log.error("Fallback logout debido a: {}", ex.getMessage());
-        if (ex instanceof AuthException authEx) {
-            throw authEx;
-        }
+        rethrowIfBusinessException(ex);
         throw new DownstreamServiceException(
                 "auth-logout",
                 "El servicio de logout no está disponible en este momento. Intente más tarde.",

@@ -3,6 +3,7 @@ package com.hospital.authservice.service;
 import com.hospital.authservice.dto.*;
 import com.hospital.authservice.entity.*;
 import com.hospital.authservice.exception.AuthException;
+import com.hospital.authservice.exception.DownstreamServiceException;
 import com.hospital.authservice.factory.UserFactory;
 import com.hospital.authservice.repository.*;
 import com.hospital.authservice.security.JwtService;
@@ -374,11 +375,20 @@ public class AuthService {
 
             log.info("ANTES DE PACIENTES");
 
-            restTemplate.exchange(
-                    "http://paciente-ms-493696077.us-east-1.elb.amazonaws.com:8082/pacientes",
-                    HttpMethod.POST,
-                    entity,
-                    Object.class);
+            try {
+                restTemplate.exchange(
+                        "http://paciente-ms-493696077.us-east-1.elb.amazonaws.com:8082/pacientes",
+                        HttpMethod.POST,
+                        entity,
+                        Object.class);
+            } catch (Exception e) {
+                log.error("Fallo al crear paciente en paciente-ms durante registro de '{}': {}",
+                        request.getUsername(), e.getMessage(), e);
+                throw new DownstreamServiceException(
+                        "paciente-ms",
+                        "No se pudo crear el registro de paciente. Intente nuevamente en unos minutos.",
+                        e);
+            }
 
             log.info("DESPUÉS DE PACIENTES");
             FichaClinicaMicroDto fichaDto = new FichaClinicaMicroDto();
@@ -407,11 +417,20 @@ public class AuthService {
 
             HttpEntity<FichaClinicaMicroDto> fichaEntity = new HttpEntity<>(fichaDto, headers);
 
-            restTemplate.exchange(
-                    "http://dm-ms-401060910.us-east-1.elb.amazonaws.com:8083/fichas",
-                    HttpMethod.POST,
-                    fichaEntity,
-                    Object.class);
+            try {
+                restTemplate.exchange(
+                        "http://dm-ms-401060910.us-east-1.elb.amazonaws.com:8083/fichas",
+                        HttpMethod.POST,
+                        fichaEntity,
+                        Object.class);
+            } catch (Exception e) {
+                log.error("Fallo al crear ficha clínica en dm-ms durante registro de '{}': {}",
+                        request.getUsername(), e.getMessage(), e);
+                throw new DownstreamServiceException(
+                        "dm-ms",
+                        "No se pudo crear la ficha clínica. Intente nuevamente en unos minutos.",
+                        e);
+            }
         }
 
         // Guardar consentimiento de términos y condiciones

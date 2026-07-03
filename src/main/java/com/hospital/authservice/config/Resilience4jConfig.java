@@ -1,5 +1,6 @@
 package com.hospital.authservice.config;
 
+import com.hospital.authservice.exception.AuthException;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
@@ -23,7 +24,11 @@ public class Resilience4jConfig {
                 .permittedNumberOfCallsInHalfOpenState(3) // Llamadas permitidas en estado half-open
                 .automaticTransitionFromOpenToHalfOpenEnabled(true) // Transición automática a half-open
                 .recordExceptions(Exception.class) // Registrar todas las excepciones
-                .ignoreExceptions(IllegalArgumentException.class) // Ignorar excepciones de validación
+                .ignoreExceptions(
+                        IllegalArgumentException.class, // Ignorar excepciones de validación
+                        AuthException.class // Errores de negocio (username en uso, credenciales, etc.)
+                                             // no deben contarse como fallo de infraestructura
+                )
                 .build();
         
         CircuitBreakerRegistry registry = CircuitBreakerRegistry.of(config);

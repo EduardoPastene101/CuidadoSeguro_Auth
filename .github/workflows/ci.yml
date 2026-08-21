@@ -62,7 +62,7 @@ jobs:
         name: codecov-umbrella
     
     - name: Upload resultados de tests
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
         name: test-results
@@ -72,7 +72,7 @@ jobs:
         retention-days: 7
     
     - name: Upload reporte de cobertura
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: target/site/jacoco/

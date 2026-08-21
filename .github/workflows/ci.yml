@@ -1,12 +1,7 @@
 name: Auth Service CI/CD Pipeline
 
 on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-  release:
-    types: [ published ]
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io

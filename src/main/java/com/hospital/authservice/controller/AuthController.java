@@ -3,6 +3,7 @@ package com.hospital.authservice.controller;
 import com.hospital.authservice.dto.*;
 import com.hospital.authservice.entity.Paciente;
 import com.hospital.authservice.service.AuthService;
+import com.hospital.authservice.service.AuthServiceWithCircuitBreaker;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -16,8 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Slf4j
@@ -28,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AuthController {
 
     private final AuthService authService;
+    private final AuthServiceWithCircuitBreaker authServiceWithCircuitBreaker;
 
     // ===================== LOGIN =====================
 
@@ -43,7 +43,7 @@ public class AuthController {
 
         log.info("Login attempt: {}", request.getUsername());
 
-        AuthResponse response = authService.login(request);
+        AuthResponse response = authServiceWithCircuitBreaker.loginWithCircuitBreaker(request);
         return ResponseEntity.ok(response);
     }
 
@@ -64,9 +64,10 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(
             @Valid @RequestBody RegisterRequest request) {
 
+        System.out.println("ENTRÓ AL REGISTER");
         log.info("Register attempt: {}", request.getUsername());
 
-        AuthResponse response = authService.register(request);
+        AuthResponse response = authServiceWithCircuitBreaker.registerWithCircuitBreaker(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -79,7 +80,7 @@ public class AuthController {
     public ResponseEntity<AuthResponse> refresh(
             @Valid @RequestBody RefreshRequest request) {
 
-        AuthResponse response = authService.refreshToken(request);
+        AuthResponse response = authServiceWithCircuitBreaker.refreshTokenWithCircuitBreaker(request);
         return ResponseEntity.ok(response);
     }
 
@@ -90,7 +91,7 @@ public class AuthController {
     public ResponseEntity<ApiResponseDto<Void>> logout(
             @Valid @RequestBody LogoutRequest request) {
 
-        authService.logout(request);
+        authServiceWithCircuitBreaker.logoutWithCircuitBreaker(request);
 
         return ResponseEntity.ok(
                 ApiResponseDto.success(null, "Logout exitoso")
